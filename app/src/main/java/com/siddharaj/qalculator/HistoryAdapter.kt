@@ -7,13 +7,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.siddharaj.qalculator.databinding.ItemHistoryLayoutBinding
 import com.siddharaj.qalculator.model.HistoryModel
-import com.siddharaj.qalculator.viewmodel.HistoryViewModel
 
 class HistoryAdapter(
     private val context: Context,
     private val items: List<HistoryModel>,
-    private val cellClickListener: CellClickListener,
-    val mHistoryViewModel: HistoryViewModel
+    private val cellClickListener: CellClickListener
 ):RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(val binding:ItemHistoryLayoutBinding): RecyclerView.ViewHolder(binding.root)
@@ -44,14 +42,8 @@ class HistoryAdapter(
         }
     }
 
-    fun deleteAll(){
-        mHistoryViewModel.delete()
-        notifyDataSetChanged()
-    }
-
     override fun getItemCount(): Int {
         return items.size
     }
-
 
 }
